@@ -18,6 +18,8 @@ class PDFController extends Controller
         
         $file_basename = basename($file_to_upload->getClientOriginalName(), '.'.$file_to_upload->getClientOriginalExtension());
 
+        // confusion between lly and ury in signing engine
+        // it also cannot handle floating point, so it must be rounded to integer
         $llx = round($request->input('llx_trans'));
         $lly = round($request->input('ury_trans'));
         $urx = round($request->input('urx_trans'));

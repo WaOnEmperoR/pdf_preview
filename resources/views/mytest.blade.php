@@ -158,8 +158,10 @@ function showPage(page_no) {
 				height: __CANVAS.height
 			});
 
+			// initial position of signature image	
 			document.getElementById("posx").value = 100;
 			document.getElementById("posy").value = 50;
+			// width and height of signature image, hard coded
 			document.getElementById("width").value = 700;
 			document.getElementById("height").value = 423;
 			
@@ -307,7 +309,7 @@ function showPage(page_no) {
 				
 				document.getElementById("llx").value = newBox.x;
 				document.getElementById("lly").value = newBox.y + newBox.height;
-				document.getElementById("urx").value = newBox.x +newBox.width;
+				document.getElementById("urx").value = newBox.x + newBox.width;
 				document.getElementById("ury").value = newBox.y;
 				
 				// Converting from HTML5 Canvas coordinate system to iTextPDF coordinate system
@@ -315,7 +317,7 @@ function showPage(page_no) {
 				// meanwhile iTextPDF defines [0,0] in lower left corner
 				document.getElementById("llx_trans").value = newBox.x;
 				document.getElementById("lly_trans").value = __CANVAS.height - (newBox.y + newBox.height);
-				document.getElementById("urx_trans").value = newBox.x +newBox.width;
+				document.getElementById("urx_trans").value = newBox.x + newBox.width;
 				document.getElementById("ury_trans").value = __CANVAS.height - newBox.y;
 
 				return newBox;
