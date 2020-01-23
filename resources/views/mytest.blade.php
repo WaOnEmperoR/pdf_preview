@@ -73,9 +73,7 @@
 		
 	</div>
 
-@php
-	Form::close() 
-@endphp
+{{ Form:close() }}
 
 <script>
 
@@ -170,7 +168,7 @@ function showPage(page_no) {
 			document.getElementById("urx").value = 800;  
 			document.getElementById("ury").value = 50;  
 			
-			// Transforming from HTML5 Canvas coordinate system to iTextPDF coordinate system
+			// Converting from HTML5 Canvas coordinate system to iTextPDF coordinate system
 			// HTML5 Canvas defines [0,0] in upper left corner
 			// meanwhile iTextPDF defines [0,0] in lower left corner
 			document.getElementById("llx_trans").value = 100;
@@ -238,7 +236,7 @@ function showPage(page_no) {
 					document.getElementById("urx").value = newX + (this.scaleX() * this.size().width);
 					document.getElementById("ury").value = newY;
 					
-					// Transforming from HTML5 Canvas coordinate system to iTextPDF coordinate system
+					// Converting from HTML5 Canvas coordinate system to iTextPDF coordinate system
 					// HTML5 Canvas defines [0,0] in upper left corner
 					// meanwhile iTextPDF defines [0,0] in lower left corner
 					document.getElementById("llx_trans").value = newX;
@@ -312,7 +310,7 @@ function showPage(page_no) {
 				document.getElementById("urx").value = newBox.x +newBox.width;
 				document.getElementById("ury").value = newBox.y;
 				
-				// Transforming from HTML5 Canvas coordinate system to iTextPDF coordinate system
+				// Converting from HTML5 Canvas coordinate system to iTextPDF coordinate system
 				// HTML5 Canvas defines [0,0] in upper left corner
 				// meanwhile iTextPDF defines [0,0] in lower left corner
 				document.getElementById("llx_trans").value = newBox.x;
@@ -342,6 +340,7 @@ function showPage(page_no) {
 			
 			var imageObj_page = new Image();
 
+			// PDF page data as background	
 			imageObj_page.onload = function() {
 				// remove previous background
 				layer.find('.background').destroy();
