@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 class PDFController extends Controller
 {
     public function index(){
-        return view('mytest', ['jwt' => config('global.jwt_kliwon_sisumaker')]);
+        return view('mytest');
     }
 
     public function signPDF(Request $request)

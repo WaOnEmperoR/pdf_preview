@@ -326,36 +326,36 @@ function showPage(page_no) {
 			// add the layer to the stage
 			stage.add(layer);	
 
-			var imageObj1 = new Image();
-			imageObj1.onload = function() {
-				img_test.image(imageObj1);
+			var imageObj_signature = new Image();
+			
+			imageObj_signature.onload = function() {
+				img_test.image(imageObj_signature);
+
+				layer.add(tr1);
+				layer.add(img_test);
 				layer.draw();
 			};
-			imageObj1.src = 'image/hiclipart.com.png';
-
-			layer.add(tr1);
-			layer.add(img_test);
+			imageObj_signature.src = 'image/hiclipart.com.png';
 
 			var canvas = document.getElementById('pdf-canvas');
 			var dataURL = canvas.toDataURL('image/png');
 			
-			var imageObj = new Image();
+			var imageObj_page = new Image();
 
-			imageObj.onload = function() {
+			imageObj_page.onload = function() {
 				// remove previous background
 				layer.find('.background').destroy();
 
 				var background = new Konva.Image({
 					name: 'background',
-					image: imageObj,
+					image: imageObj_page,
 				});
 				// add new one
 				layer.add(background);
 				background.moveToBottom();
 				layer.draw();
-			};
-			
-			imageObj.src = dataURL;		
+			};			
+			imageObj_page.src = dataURL;		
 
 			// Show the canvas and hide the page loader
 			// $("#pdf-canvas").show();
