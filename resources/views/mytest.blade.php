@@ -73,7 +73,7 @@
 		
 	</div>
 
-{{ Form:close() }}
+{{ Form::close() }}
 
 <script>
 
