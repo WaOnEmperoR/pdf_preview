@@ -87,10 +87,12 @@ var __PDF_DOC,
 
 var strokeWidth = 1;
 
-function showPDF(pdf_url) {
+// function showPDF(pdf_url) {
+function showPDF(pdfByteArray) {
 	$("#pdf-loader").show();
 
-	PDFJS.getDocument({ url: pdf_url }).then(function(pdf_doc) {
+	// PDFJS.getDocument({ url: pdf_url }).then(function(pdf_doc) {
+	PDFJS.getDocument(pdfByteArray).then(function(pdf_doc) {	
 		__PDF_DOC = pdf_doc;
 		__TOTAL_PAGES = __PDF_DOC.numPages;
 		
@@ -372,8 +374,11 @@ $("#upload-button").on('click', function() {
 });
 
 // When user chooses a PDF file
-$("#file-to-upload").on('change', function() {
+$("#file-to-upload").on('change', function(e) {
 	// Validate whether PDF
+
+	var file = e.target.files[0];
+
     if(['application/pdf'].indexOf($("#file-to-upload").get(0).files[0].type) == -1) {
         alert('Error : Not a PDF');
         return;
@@ -382,7 +387,17 @@ $("#file-to-upload").on('change', function() {
 	//$("#upload-button").hide();
 
 	// Send the object url of the pdf
-	showPDF(URL.createObjectURL($("#file-to-upload").get(0).files[0]));
+	// showPDF(URL.createObjectURL($("#file-to-upload").get(0).files[0]));
+
+	var fileReader = new FileReader();
+
+	fileReader.onload = function() {
+		var typedarray = new Uint8Array(this.result);
+
+		showPDF(typedarray);
+	}
+
+	fileReader.readAsArrayBuffer(file);
 });
 
 // Previous page of the PDF
